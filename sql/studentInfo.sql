@@ -20,15 +20,14 @@ CREATE TABLE address(
     id serial PRIMARY KEY,
     name text,
     student_id integer REFERENCES student(id) ON DELETE CASCADE --student_id in this table is same as the id in the student table. It is the foreign key.
+    --ON DELETE CASCADE helps to delete values from child table when referencing row gets deleted from parent table
 );
-
 
 INSERT INTO
     student(first_name, last_name)
 VALUES
     ('Amal', 'Madhu'),
     ('Jim', 'Smarts');
-
 
 INSERT INTO
     address(name, student_id)
