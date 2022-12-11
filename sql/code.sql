@@ -69,3 +69,16 @@ WHERE
 -- ------------+-----------+---------------------------
 --  Jane       | Smith     | Introduction to Databases
 --  Josh       | Sullivan  | Introduction to Databases
+--
+--
+--self joins
+SELECT
+    L.first_name,
+    L.last_name 
+FROM
+    lecturer AS L
+    INNER JOIN course AS C1 ON L.id = C1.lecturer_id
+    INNER JOIN course AS C2 ON L.id = C2.lecturer_id
+WHERE
+    C1.name = 'Introduction to Databases'
+    AND C2.name = 'Fundamentals of Computing';
