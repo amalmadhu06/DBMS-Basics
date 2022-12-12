@@ -4,8 +4,6 @@ SELECT
     id,
     make,
     price,
-    price * 0.10 AS with_tax
+    ROUND(price * 0.10) AS with_tax
 FROM
     car;
-
-    
