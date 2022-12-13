@@ -50,3 +50,25 @@ WHERE
         FROM
             grade
     );
+
+--finding the number of students who have gpa greater than average
+SELECT
+    COUNT(gpa) AS number_of_students
+FROM
+    (
+        SELECT
+            S.first_name,
+            S.last_name,
+            G.semester,
+            G.gpa
+        FROM
+            student as S
+            INNER JOIN grade AS G ON S.id = G.student_id
+        WHERE
+            G.gpa > (
+                SELECT
+                    AVG(gpa)
+                FROM
+                    grade
+            )
+    ) AS temp;
